@@ -13,10 +13,16 @@ export class ProductService {
     return this.db.list('/products').push(product);
   }
 
-  getAll() {
-    return this.db.list('/products')
-        .snapshotChanges()
-        .pipe(map(actions => actions.map(a => ({ key: a.key, ...a.payload.val() }))));
+  getAll<T>() {
+    return this.db.list<T>('/products').snapshotChanges().pipe(
+      map(a =>
+        a.map( p => {
+            const value = <any>Object.assign({}, p.payload.val());
+            value.key = p.key;
+            return <T>value;
+          }
+      ))
+    );
   }
 
   get(productId) {

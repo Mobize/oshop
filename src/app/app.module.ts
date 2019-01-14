@@ -6,6 +6,7 @@ import {AngularFireDatabaseModule } from 'angularfire2/database';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CustomFormsModule } from 'ng2-validation';
+import {DataTableModule} from "angular-6-datatable";
 
 import { AppComponent } from './app.component';
 import { environment } from 'src/environments/environment';
@@ -50,6 +51,7 @@ import { ProductService } from './product.service';
     AngularFireDatabaseModule,
     FormsModule,
     CustomFormsModule,
+    DataTableModule,
     NgbModule.forRoot(),
     RouterModule.forRoot([
       {path: '', component: HomeComponent},

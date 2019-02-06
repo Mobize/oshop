@@ -1,0 +1,14 @@
+
+.card{
+    margin-bottom: 30px;
+    max-width: 398px;
+    max-height: 415px;
+}
+
+.card-img-top {
+    max-height: 240px;
+}
+
+.card-footer{
+    padding: 0;
+}

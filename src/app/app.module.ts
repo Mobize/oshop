@@ -28,6 +28,9 @@ import { ProductFormComponent } from './admin/product-form/product-form.componen
 import { CategoryService } from './category.service';
 import { FormsModule } from '@angular/forms';
 import { ProductService } from './product.service';
+import { ProductFilterComponent } from './products/product-filter/product-filter.component';
+import { ProductCardComponent } from './product-card/product-card.component';
+import { ShoppingCartService } from './shopping-cart.service';
 
 @NgModule({
   declarations: [
@@ -42,7 +45,9 @@ import { ProductService } from './product.service';
     AdminProductsComponent,
     AdminOrdersComponent,
     LoginComponent,
-    ProductFormComponent
+    ProductFormComponent,
+    ProductFilterComponent,
+    ProductCardComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +59,7 @@ import { ProductService } from './product.service';
     DataTableModule,
     NgbModule.forRoot(),
     RouterModule.forRoot([
-      {path: '', component: HomeComponent},
+      {path: '', component: ProductsComponent},
       {path: 'products', component: ProductsComponent},
       {path: 'shopping-cart', component: ShoppingCartComponent},
       {path: 'login', component: LoginComponent},
@@ -69,7 +74,7 @@ import { ProductService } from './product.service';
       {path: 'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuard, AdminAuthGuard]},
     ])
   ],
-  providers: [AuthService, AuthGuard, UserService, AdminAuthGuard, CategoryService, ProductService],
+  providers: [AuthService, AuthGuard, UserService, AdminAuthGuard, CategoryService, ProductService,ShoppingCartService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

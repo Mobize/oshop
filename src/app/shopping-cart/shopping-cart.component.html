@@ -33,14 +33,17 @@
     </tbody>
     <tfoot>
       <tr>
-        <!-- <th>Total</th> -->
-        <th></th>
+        <th>Total</th>
         <th></th>
         <th></th>
         <th class="text-right">{{ cart.totalPrice | currency:'EUR':true}}</th>
       </tr>
     </tfoot>
   </table>
+  <a
+  routerLink="/check-out"
+  *ngIf="cart.totalItemsCount != 0"
+  class="btn btn-primary">Check Out</a>
   <!-- <button (click)="clearCart()"
   class="btn btn-danger btn-sm">Clear Shopping Cart</button> -->
 </div>

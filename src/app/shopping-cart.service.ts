@@ -30,6 +30,11 @@ export class ShoppingCartService {
     return cart;
   }
 
+  async clearCart() {
+    let cartId = await this.getOrCreateCartId();
+    this.db.object('/shopping-carts/' + cartId + '/items').remove();
+  }
+
   private getItem(cartId: string, productId: string) {
     return this.db.object('/shopping-carts/' + cartId + '/items/' + productId);
   }
@@ -57,7 +62,7 @@ export class ShoppingCartService {
     item.snapshotChanges().pipe(take(1)).subscribe((i: any) => {
       if (i.payload.val()) {
         item.update({ product:product, quantity: i.payload.val().quantity + change });
-      } else item.set({ product:product, quantity: 1 }); 
-    }); 
+      } else item.set({ product:product, quantity: 1 });
+    });
   }
 }
